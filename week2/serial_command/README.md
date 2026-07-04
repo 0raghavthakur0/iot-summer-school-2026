@@ -1,101 +1,33 @@
-/*
--------------------------------------------------------
-Author      : Raghav Thakur
-Course      : IIT Jammu Summer School 2026
-Module      : Module 2
-Question    : Q16
-Description : Serial Command Interface
--------------------------------------------------------
-*/
+# Serial Command Interface
 
-const int led = 13;
+## Commands
 
-String command = "";
-int blinkCounter = 0;
-bool ledState = false;
+LED_ON
 
-void setup() {
-  pinMode(led, OUTPUT);
-  Serial.begin(9600);
+LED_OFF
 
-  Serial.println("=== Serial Command Interface ===");
-}
+BLINK_1
 
-void loop() {
+BLINK_2
 
-  if (Serial.available()) {
+...
 
-    command = Serial.readStringUntil('\n');
-    command.trim();
+BLINK_9
 
-    if (command == "LED_ON") {
+STATUS
 
-      digitalWrite(led, HIGH);
-      ledState = true;
-      Serial.println("LED ON");
+RESET
 
-    }
+## Expected Output
 
-    else if (command == "LED_OFF") {
+LED ON
 
-      digitalWrite(led, LOW);
-      ledState = false;
-      Serial.println("LED OFF");
+LED OFF
 
-    }
+Blink Count = 5
 
-    else if (command.startsWith("BLINK_")) {
+LED State : ON
 
-      int times = command.substring(6).toInt();
+Blink Counter Reset
 
-      if (times >= 1 && times <= 9) {
-
-        for (int i = 0; i < times; i++) {
-
-          digitalWrite(led, HIGH);
-          delay(300);
-
-          digitalWrite(led, LOW);
-          delay(300);
-
-          blinkCounter++;
-        }
-
-        Serial.print("Blink Count = ");
-        Serial.println(blinkCounter);
-      }
-
-      else {
-        Serial.println("ERROR: Blink value must be between 1 and 9");
-      }
-    }
-
-    else if (command == "STATUS") {
-
-      Serial.print("LED State : ");
-
-      if (ledState)
-        Serial.println("ON");
-      else
-        Serial.println("OFF");
-
-      Serial.print("Blink Counter : ");
-      Serial.println(blinkCounter);
-    }
-
-    else if (command == "RESET") {
-
-      blinkCounter = 0;
-      Serial.println("Blink Counter Reset");
-
-    }
-
-    else {
-
-      Serial.println("ERROR: Unknown command");
-
-    }
-
-  }
-
-}
+ERROR: Unknown command
