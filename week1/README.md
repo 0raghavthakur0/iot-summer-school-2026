@@ -1,3 +1,8 @@
-# Week 1
+# LED Blink
 
-This folder contains all Module 1 assignments.
+## Hardware
+- Arduino UNO
+- USB Cable
+
+## Expected Output
+Built-in LED blinks every 1 second.
