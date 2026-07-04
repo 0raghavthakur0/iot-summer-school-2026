@@ -1,3 +1,13 @@
+/*
+------------------------------------------
+Author : Raghav Thakur
+Date : 04-07-2026
+Version : 1.3
+Description :
+LED Blink with Serial Counter and
+Potentiometer Speed Control
+------------------------------------------
+*/
 int count = 0;
 int sensorValue;
 
